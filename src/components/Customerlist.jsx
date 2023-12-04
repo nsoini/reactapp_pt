@@ -99,7 +99,10 @@ export default function Customerlist(){
 
     const deleteCustomer = () => {
         const url = deleteData.links[0].href;
-            fetch(url, { method: 'DELETE' })
+        const newUrl = url.replace("http", "https")
+        console.log(newUrl);
+        console.log(newUrl)
+            fetch(newUrl, { method: 'DELETE' })
                 .then(response => {
                     if (response.ok) {
                         setInfoMsg('The customer was deleted successfully.');
@@ -115,14 +118,13 @@ export default function Customerlist(){
 
     const openDelete = (params) => {
         setDialogOpen(true);
-        setDeleteData(params.data);
+        setDeleteData(params.data)
         }
 
     
     const updateCustomer = (customer, link) => {
         const url = link;
         const newUrl = url.replace("http", "https")
-        console.log(newUrl);
         fetch(link, {
             method: 'PUT',
             headers: {'Content-Type': 'application/json'},
