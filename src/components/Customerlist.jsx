@@ -99,9 +99,8 @@ export default function Customerlist(){
 
     const deleteCustomer = () => {
         const url = deleteData.links[0].href;
-        const newUrl = url.replace("http", "https")
-        console.log(newUrl);
-        console.log(newUrl)
+        const id = url.substr(-5, 5);
+        const newUrl = 'https://traineeapp.azurewebsites.net/api/customers/' + id 
             fetch(newUrl, { method: 'DELETE' })
                 .then(response => {
                     if (response.ok) {
@@ -123,9 +122,9 @@ export default function Customerlist(){
 
     
     const updateCustomer = (customer, link) => {
-        const url = link;
-        const newUrl = url.replace("http", "https")
-        fetch(link, {
+        const id = link.substr(-5, 5);
+        const newUrl = 'https://traineeapp.azurewebsites.net/api/customers/' + id 
+        fetch(newUrl, {
             method: 'PUT',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(customer)
