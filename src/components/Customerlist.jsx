@@ -120,7 +120,9 @@ export default function Customerlist(){
 
     
     const updateCustomer = (customer, link) => {
-
+        const url = link;
+        const newUrl = url.replace("http", "https")
+        console.log(newUrl);
         fetch(link, {
             method: 'PUT',
             headers: {'Content-Type': 'application/json'},
